@@ -1,5 +1,9 @@
 $(function() {
-  var console = $('.console');
+  var $console = $('.console');
+
+  $console.on('click', function(e){
+    $console.find('input').focus();
+  });
 
   $.getJSON('/challenges').then(function(data) {
     var challenges = data;
@@ -30,7 +34,9 @@ $(function() {
     var postResult = function(resultMessage, resultClass, inputField) {
       var messageDiv = $('<div>');
       messageDiv.addClass(resultClass).text(resultMessage);
-      return messageDiv.insertBefore(inputField);
+      messageDiv.insertBefore(inputField);
+      $console.scrollTop($console.get(0).scrollHeight);
+      return messageDiv;
     };
 
     var postUserInput = function(userInput, inputField) {
