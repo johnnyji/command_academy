@@ -9,7 +9,6 @@ get '/signup' do
 end
 
 post '/signup' do
-  binding.pry
   @admin = Admin.new(username: params[:username], password: params[:password]);
   if @admin.save
     redirect to('/admin/index')
