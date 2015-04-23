@@ -5,16 +5,17 @@ get '/' do
 end
 
 get '/signup' do
-  erb :signup
+  erb :'admin/signup'
 end
 
 post '/signup' do
+  binding.pry
   @admin = Admin.new(username: params[:username], password: params[:password]);
   if @admin.save
     session[:admin_id] = @admin.id
     redirect to('/admin/index')
   else
-    erb :signup
+    erb :'admin/signup'
   end
 end
 
@@ -22,7 +23,15 @@ get '/login' do
   erb :'admin/login'
 end
 
-post 'login' do
+post '/login' do
+  binding.pry
+  @admin = Admin.find(1)
+  if @admin.nil?
+    erb :'admin/login'
+  else
+    session[:admin_id] = @admin.id
+    redirect to('/admin/index')
+  end
 end
 
 get '/logout' do
@@ -78,7 +87,8 @@ helpers do
   end
 
   def current_admin
-    @current_admin = Admin.where(id: session[:admin_id]) if session[:admin_id]
+    @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
   rescue ActiveRecord::RecordNotFound
+    redirect to('/')
   end
 end
