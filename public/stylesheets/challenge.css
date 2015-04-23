@@ -36,7 +36,7 @@
   margin: 2em 4em 2em 0;
   color: #FFF;
   white-space: pre-wrap;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .console p {

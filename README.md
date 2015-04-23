@@ -1,10 +1,19 @@
-Sinatra
-=============
+## Command Academy
 
-Brought to you by Lighthouse Labs
+Command Academy is a site for you to interactively learn and utilize UNIX commands to navigate your computer at blazing fast speed!
 
-## Getting Started
+### The Dev Process
 
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+The technologies we've explored with and used during the development of this project:
+
+- Ruby Sinatra
+- Using Sinatra as an API to serve JSON
+- AJAX
+- JavaScript to render the JSON and serve up a responsive site
+- SPA
+
+### The Team:
+
+[David Feimer](https://github.com/daxander)
+[Johnny Ji](http://www.johnnyji.com/)
+[Nico Flojo](https://https://github.com/nicoflojo)
