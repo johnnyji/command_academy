@@ -2,6 +2,28 @@ get '/' do
   erb :index
 end
 
+get '/signup' do
+  erb :signup
+end
+
+post '/signup' do
+  @admin = Admin.new(username: params[:username], password: params[:password]);
+  if @admin.save
+    redirect_to('/admin/index')
+  else
+    erb :signup
+  end
+end
+
+get '/login' do
+end
+
+post 'login' do
+end
+
+get '/logout' do
+end
+
 get '/begin' do
   # @challenge = Challenge.all.order('level DESC').limit(1).first
   erb :challenges
