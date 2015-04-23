@@ -9,8 +9,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  binding.pry
-  @admin = Admin.new(username: params[:username], password: params[:password]);
+  @admin = Admin.new(username: params[:username], password: params[:password])
   if @admin.save
     session[:admin_id] = @admin.id
     redirect to('/admin/index')
@@ -24,8 +23,7 @@ get '/login' do
 end
 
 post '/login' do
-  binding.pry
-  @admin = Admin.find(1)
+  @admin = Admin.where(username: params[:username], password: params[:password]).first
   if @admin.nil?
     erb :'admin/login'
   else
