@@ -1,0 +1,13 @@
+<a href="/logout">Sign out</a>
+<%= current_admin.username %>
+
+<% @challenges.each do |challenge| %>
+  <%= challenge.instructions %>
+  <%= challenge.level %>
+  <%= challenge.answer %>
+<% end %>
+
+<form action="challenges/create" method="post" class="new-challenge-form">
+  <input type="text" name="answer" placeholder="Enter the command you want to teach">
+  <textarea type="text" name="instructions" placeholder="Please type the instructions for your new lesson"></textarea>
+</form>

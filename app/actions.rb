@@ -11,6 +11,7 @@ end
 post '/signup' do
   @admin = Admin.new(username: params[:username], password: params[:password]);
   if @admin.save
+    session[:admin_id] = @admin.id
     redirect to('/admin/index')
   else
     erb :signup
@@ -18,12 +19,20 @@ post '/signup' do
 end
 
 get '/login' do
+  erb :'admin/login'
 end
 
 post 'login' do
 end
 
 get '/logout' do
+  session.clear
+  redirect to('/')
+end
+
+get '/admin/index' do
+  @challenges = Challenge.all
+  erb :'admin/index'
 end
 
 get '/begin' do
@@ -66,5 +75,10 @@ end
 helpers do
   def admin_count
     @admin_count = Admin.count
+  end
+
+  def current_admin
+    @current_admin = Admin.where(id: session[:admin_id]) if session[:admin_id]
+  rescue ActiveRecord::RecordNotFound
   end
 end

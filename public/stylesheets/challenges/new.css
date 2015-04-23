@@ -1,0 +1,4 @@
+.new-challenge-form textarea {
+  white-space: pre-wrap;
+  /*IMPORTANT, this will ensure that whatever the user types into the textarea, including line breaks is, is what will be saved to the database*/
+}
