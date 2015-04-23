@@ -4,6 +4,7 @@ get '/' do
 end
 
 get '/begin' do
+  # @challenge = Challenge.all.order('level DESC').limit(1).first
   erb :challenges
 end
 

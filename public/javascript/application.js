@@ -9,7 +9,15 @@ $(function() {
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
     var currentLevel = 0;
-    var userAnswer = consoleInput.val();
+
+    var populateInitialFields = function() {
+      var initialChallenge = challenges[0];
+      challengeInstructions.text(initialChallenge.instructions);
+      challengeTitle.text(initialChallenge.answer);
+      challengeAnswer.text(initialChallenge.answer);
+    };
+
+    populateInitialFields();
 
     var postConsoleResponse = function(currentLevel, inputField) {
       if (currentLevel.console_text !== '') {
@@ -71,7 +79,7 @@ $(function() {
     var beginChallenges = function() {
       consoleInput.keydown(function(e) {
         if (e.which === 13) {
-          var userAnswer = consoleInput.val();
+          var userAnswer = $.trim(consoleInput.val());
           postUserInput(userAnswer, consoleInputWrapper);
 
           if (userAnswer === challenges[currentLevel].answer) {
@@ -87,7 +95,6 @@ $(function() {
         }
       });
     };
-
     $('.hidden').removeClass('hidden'); //this only shows the page when all JSON data has been loaded
     beginChallenges(); 
   });
