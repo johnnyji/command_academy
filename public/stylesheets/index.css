@@ -24,6 +24,7 @@
   background-color: #202020;
   margin: 2em 2em 2em 0;
   color: #FFF;
+  white-space: pre-wrap;
 }
 
 .console-input-field {
