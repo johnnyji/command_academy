@@ -83,21 +83,24 @@ $(function() {
     // };
 
     var beginChallenges = function() {
-      consoleInput.keydown(function(e) {
+      $console.on("keydown", function(e){
         if (e.which === 13) {
           var userAnswer = $.trim(consoleInput.val());
           postUserInput(userAnswer, consoleInputWrapper);
-
           if (userAnswer === challenges[currentLevel].answer) {
             var successMessageDiv = $('<div>');
             postConsoleResponse(challenges[currentLevel], consoleInputWrapper);
             postResult(challenges[currentLevel].success, 'success', consoleInputWrapper);
             currentLevel ++;
             nextChallenge(currentLevel);
+          } else if (userAnswer === 'clear') {
+            $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
+            consoleInput = $('.console-input-field');
+            consoleInputWrapper = $('.console-input-wrapper');
+            consoleInput.focus();
           } else {
             postResult(challenges[currentLevel].fail, 'fail', consoleInputWrapper);
           }
-
         }
       });
     };
