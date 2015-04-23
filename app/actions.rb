@@ -9,9 +9,10 @@ get '/signup' do
 end
 
 post '/signup' do
+  binding.pry
   @admin = Admin.new(username: params[:username], password: params[:password]);
   if @admin.save
-    redirect_to('/admin/index')
+    redirect to('/admin/index')
   else
     erb :signup
   end
