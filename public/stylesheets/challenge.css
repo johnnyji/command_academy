@@ -4,8 +4,15 @@
   width: 30%;
   height: 400px;
   margin: 2em 0 2em 2em;
-  padding: 1em;
+  padding: 1em 2em  ;
   background-color: #DBDBDB;
+}
+
+.challenge-title {
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 2em;
+  margin-top: 0.3em;
 }
 
 .challenge-instructions {
@@ -32,6 +39,10 @@
   overflow: auto;
 }
 
+.console p {
+  margin-top: 10px;
+}
+
 .console-input-field {
   width: 600px;
   height: 30px;
@@ -45,6 +56,7 @@
 }
 
 .console-response {
+  color: #666;
   margin: 10px 0 0 0;
 }
 .success {
