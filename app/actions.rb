@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/' do
   erb :index
 end
@@ -59,4 +61,10 @@ get '/challenges' do
   ]
   content_type :json
     challenges.to_json
+end
+
+helpers do
+  def admin_count
+    @admin_count = Admin.count
+  end
 end
