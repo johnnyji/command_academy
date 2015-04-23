@@ -1,4 +1,20 @@
+.new-challenge-form {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+.new-challenge-form input[type=text] {
+  width: 400px;
+  margin-bottom: 1em;
+  padding: 0.3em;
+}
+
 .new-challenge-form textarea {
   white-space: pre-wrap;
+  width: 400px;
+  height: 225px;
+  padding: 0.3em;
+  margin-bottom: 1em;
   /*IMPORTANT, this will ensure that whatever the user types into the textarea, including line breaks is, is what will be saved to the database*/
 }

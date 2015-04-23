@@ -29,3 +29,14 @@
   border-style: none;
   padding: 0.5em 1em;
 }
+
+.admin-container {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.admin-challenge-container {
+  padding: 10px 10px 20px 10px;
+  margin: 30px 0;
+  border-bottom: 1px solid #DBDBDB;
+}
