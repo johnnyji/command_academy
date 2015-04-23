@@ -1,50 +1,47 @@
-.challenge {
-  float: left;
-  display: inline-block;
-  width: 30%;
-  height: 400px;
-  margin: 2em 0 2em 2em;
+.index-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 45%; 
   padding: 1em;
-  background-color: #DBDBDB;
-}
-
-.challenge-answer {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 10px;
-  background-color: #EEEEEE;
-}
-
-.console {
-  float: right;
-  display: inline-block;
-  width: 60%;
+  width: 70vw;
   height: 400px;
-  padding: 1em;
+  color: #EEEEEE;
   background-color: #202020;
-  margin: 2em 2em 2em 0;
-  color: #FFF;
-  white-space: pre-wrap;
+  text-align: center;
 }
 
-.console-input-field {
-  width: 600px;
-  height: 30px;
-  margin-left: 0.3em;
+.index-title {
+  font-size: 3em;
+  letter-spacing: 1px;  
+}
+
+.index-description {
+  margin: 0 auto;
+  width: 400px;
+  letter-spacing: 1px;
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.index-input-wrapper {
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.index-input-wrapper p {
+  margin-bottom: 0;
+  color: green;
+}
+
+.index-input-field {
+  width: 400px;
+  margin: 1em 0 0 0.5em;
   background-color: inherit;
+  color: inherit;
   border-style: none;
 }
 
-.console-input-field:focus {
+.index-input-field:focus {
   outline: none;
-}
-
-.success {
-  color: green;
-  margin-bottom: 20px;
-}
-
-.fail {
-  color: red;
-  margin-bottom: 20px;
 }

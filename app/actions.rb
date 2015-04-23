@@ -3,6 +3,10 @@ get '/' do
   erb :index
 end
 
+get '/begin' do
+  erb :challenges
+end
+
 get '/challenges' do
   # challenges = Challenge.all('level DESC')
   challenges = [

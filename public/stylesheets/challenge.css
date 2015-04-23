@@ -1,0 +1,58 @@
+.challenge {
+  float: left;
+  display: inline-block;
+  width: 30%;
+  height: 400px;
+  margin: 2em 0 2em 2em;
+  padding: 1em;
+  background-color: #DBDBDB;
+}
+
+.challenge-instructions {
+  white-space: pre-wrap;
+}
+
+.challenge-answer {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #EEEEEE;
+}
+
+.console {
+  float: right;
+  display: inline-block;
+  width: 60%;
+  height: 400px;
+  padding: 1em;
+  background-color: #202020;
+  margin: 2em 2em 2em 0;
+  color: #FFF;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+.console-input-field {
+  width: 600px;
+  height: 30px;
+  margin-left: 0.3em;
+  background-color: inherit;
+  border-style: none;
+}
+
+.console-input-field:focus {
+  outline: none;
+}
+
+.console-response {
+  margin: 10px 0 0 0;
+}
+.success {
+  color: green;
+  margin: 10px 0 20px 25px;
+}
+
+.fail {
+  color: #96281B;
+  margin: 10px 0 20px 25px; 
+}
