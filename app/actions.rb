@@ -58,9 +58,9 @@ get '/admin/index' do
 end
 
 post '/admin/challenges' do
-  @level = Challenge.count == 0 ? Challenge.count : (Challenge.count + 1)
-  @challenge = Challenge.new(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer], level: level)
-  if @challenge.save
+  new_level = Challenge.count + 1
+  challenge = Challenge.new(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer], level: new_level)
+  if challenge.save
     redirect to('/admin/index')
   else
     erb :'admin/index'
