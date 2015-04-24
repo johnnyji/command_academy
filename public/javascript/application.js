@@ -12,7 +12,7 @@ $(function() {
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
-    var currentLevel = 0;
+    var currentLevel = 1;
 
     var populateInitialFields = function() {
       var initialChallenge = challenges[0];

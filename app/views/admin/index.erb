@@ -2,7 +2,7 @@
   <a href="/logout">Sign out</a>
   <%= current_admin.username %>
 
-  <form action="/challenges/create" method="post" class="new-challenge-form">
+  <form action="/admin/challenges" method="post" class="new-challenge-form">
     <input type="text" name="answer" placeholder="Enter the command you want to teach"><br>
     <textarea type="text" name="instructions" placeholder="Please type the instructions for your new lesson"></textarea><br>
     <input type="text" name="success" placeholder="Please type your success message here"></input><br>
@@ -13,15 +13,18 @@
 
   <% @challenges.each do |challenge| %>
     <div class="admin-challenge-container">
-    <p class="admin-challenge-level">Level <%= challenge.level + 1 %></p>  
-    <p class="admin-challenge-title"><%= challenge.answer %></p>
-    <pre class="admin-challenge-instructions"><%= challenge.instructions %></pre>
-    <p class="admin-message-title">Success Message </p>
-    <p class="admin-message"><%= challenge.success %></p>
-    <p class="admin-message-title">Fail Message </p>
-    <p class="admin-message"><%= challenge.fail %></p>
-     <p class="admin-message-title">Console Text </p>
-    <p class="admin-message"><%= challenge.console_text %></p>
+      <p class="admin-challenge-level">Level <%= challenge.level %></p>  
+      <p class="admin-challenge-title"><%= challenge.answer %></p>
+      <pre class="admin-challenge-instructions"><%= challenge.instructions %></pre>
+      <p class="admin-message-title">Success Message </p>
+      <p class="admin-message"><%= challenge.success %></p>
+      <p class="admin-message-title">Fail Message </p>
+      <p class="admin-message"><%= challenge.fail %></p>
+       <p class="admin-message-title">Console Text </p>
+      <p class="admin-message"><%= challenge.console_text %></p>
+
+      <a href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
+      <a href="/admin/challenges/<%= challenge.id %>/delete">delete</a>
     </div>
   <% end %>
 </div>
