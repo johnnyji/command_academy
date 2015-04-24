@@ -58,7 +58,7 @@ post '/challenges/create' do
   if @new_challenge.save
     redirect to('/admin/index')
   else
-    erb :'challenges/create'
+    erb :'admin/index'
   end
   
 end
