@@ -33,6 +33,7 @@
 .admin-container {
   margin: 0 auto;
   width: 600px;
+  padding: 5px;
 }
 
 .admin-challenge-container {
@@ -40,3 +41,39 @@
   margin: 30px 0;
   border-bottom: 1px solid #DBDBDB;
 }
+
+.admin-challenge-title {
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 2em;
+  margin-top: 0.3em;
+}
+
+.admin-challenge-level{
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 1em;
+
+}
+
+.admin-message{
+  padding-left:2em;
+  padding-right:2em;
+  font-size: 1em;
+}
+
+.admin-message-title{
+  padding-left:2em;
+  padding-right:2em;
+  font-weight: bolder;
+
+}
+
+.admin-challenge-instructions{
+  white-space: pre-wrap;
+}
+
+
+
+
+

@@ -52,6 +52,17 @@ get '/challenges' do
     challenges.to_json
 end
 
+post '/challenges/create' do
+  @last_level = Challenge.last.level + 1
+  @new_challenge = Challenge.new(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer], level: @last_level)
+  if @new_challenge.save
+    redirect to('/admin/index')
+  else
+    erb :'challenges/create'
+  end
+  
+end
+
 helpers do
   def admin_count
     @admin_count = Admin.count
