@@ -14,7 +14,7 @@
   <% @challenges.each do |challenge| %>
     <div class="admin-challenge-container">
     <p class="admin-challenge-level">Level <%= challenge.level + 1 %></p>  
-    <p class="admin-challenge-title"><%= challenge.answer %>></p>
+    <p class="admin-challenge-title"><%= challenge.answer %></p>
     <pre class="admin-challenge-instructions"><%= challenge.instructions %></pre>
     <p class="admin-message-title">Success Message </p>
     <p class="admin-message"><%= challenge.success %></p>
