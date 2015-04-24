@@ -18,6 +18,10 @@ post '/signup' do
   end
 end
 
+get '/finished' do
+  erb :finished
+end
+
 get '/login' do
   erb :'admin/login'
 end
@@ -62,6 +66,9 @@ post '/challenges/create' do
   end
   
 end
+
+
+
 
 helpers do
   def admin_count

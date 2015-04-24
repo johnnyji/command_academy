@@ -68,7 +68,7 @@ challenges = [
       success: "SUCCESS! You used the 'touch stylesheet.css && touch script.js && cat.jpg' command'",
       fail: "IncorrectInputError: Try the 'touch stylesheet.css && touch script.js && cat.jpg' command",
       level: 8,
-      answer: "touch stylesheet.css && touch script.js && cat.jpg",
+      answer: "touch stylesheet.css && touch script.js && touch cat.jpg",
       console_text: ""
     },
       {
@@ -128,12 +128,20 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Almost there! We can can use the 'cat' command to display the contents of a file\n\n Type 'cat index.html' into the console",
+      instructions: "Almost there! We can use the 'cat' command to display the contents of a file\n\n Type 'cat index.html' into the console",
       success: "SUCCESS! You showed the items contents!",
       fail: "IncorrectInputError: Use the 'cat index.html' command",
       level: 16,
       answer: "cat index.html",
       console_text: "<h1>Hello World<h1>"
+    },
+       {
+      instructions: "Amazing Work!  You have now completed the course!",
+      success: "",
+      fail: "",
+      level: 17,
+      answer: "",
+      console_text: ""
     },
 
   ].each do |challenge_hash|

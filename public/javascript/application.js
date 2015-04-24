@@ -54,7 +54,7 @@ $(function() {
     var nextChallenge = function(level) {
       var currentChallenge = challenges[level];
       if (currentChallenge === challenges.last) {
-        finished();
+        window.location.href = '/finished';
       } else {
         challengeInstructions.text(currentChallenge.instructions);
         challengeTitle.text(currentChallenge.answer);
