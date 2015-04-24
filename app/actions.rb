@@ -86,6 +86,7 @@ post '/admin/challenges/:id/edit' do
   else
     #flash error = sorry didnt save properly
     erb :'admin/edit'
+
   end
 end
 
