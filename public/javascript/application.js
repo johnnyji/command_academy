@@ -112,7 +112,7 @@ $(function() {
           if (currentChallenge.finished) {
             window.location.href = '/finished';
           } else {
-            postResult(lastChallenge.fail, 'fail', consoleInputWrapper);
+            postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
           }
           break;
         default:
