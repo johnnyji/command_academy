@@ -133,7 +133,7 @@ challenges = [
       fail: "IncorrectInputError: Use the 'cat index.html' command",
       level: 17,
       answer: "cat index.html",
-      console_text: "<h1>Hello World<h1>"
+      console_text: "<h1>Hello World</h1>"
     },
 
   ].each do |challenge_hash|
