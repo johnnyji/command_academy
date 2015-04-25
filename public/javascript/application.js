@@ -49,18 +49,22 @@ $(function() {
     }
 
     var finished = function() {
-      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!";
+      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
+      var winningTitle = "Congratulations!";
+      var winningAnswer = "next";
+      var errorMessage = "Wrong, type 'next' to continue!"
       challengeInstructions.text(winningMessage);
+      challengeTitle.text(winningTitle);
+      challengeAnswer.text(winningAnswer);
     };
 
-    var nextChallenge = function(level) {
-      var currentChallenge = challenges[level];
-      if (currentChallenge === challenges.last) {
+    var nextChallenge = function(nextChallenge) {
+      if (nextChallenge === challenges.last) {
         finished();
       } else {
-        challengeInstructions.text(currentChallenge.instructions);
-        challengeTitle.text(currentChallenge.answer);
-        challengeAnswer.text(currentChallenge.answer);
+        challengeInstructions.text(nextChallenge.instructions);
+        challengeTitle.text(nextChallenge.answer);
+        challengeAnswer.text(nextChallenge.answer);
       }
     };
 
@@ -76,26 +80,34 @@ $(function() {
       }
     };
 
+    var clearConsole = function() {
+      $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
+      consoleInput = $('.console-input-field');
+      consoleInputWrapper = $('.console-input-wrapper');
+      consoleInput.focus();
+    }
+
     var beginChallenges = function() {
       $console.on("keydown", function(e){
         if (e.which === enterKey) {
           lastUserInputIndex = 0;
-          var userAnswer = $.trim(consoleInput.val());
-          postUserInput(userAnswer, consoleInputWrapper);
-          if (userAnswer === challenges[currentIndex].answer) {
-            var successMessageDiv = $('<div>');
-            postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
-            postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
-            currentIndex ++;
-            nextChallenge(currentIndex);
-          } else if (userAnswer === 'clear') {
-            $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
-            consoleInput = $('.console-input-field');
-            consoleInputWrapper = $('.console-input-wrapper');
-            consoleInput.focus();
-          } else {
-            postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
+          var userInput = $.trim(consoleInput.val());
+          postUserInput(userInput, consoleInputWrapper);
+
+          switch(userInput) {
+            case challenges[currentIndex].answer:
+              postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
+              postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
+              currentIndex ++;
+              nextChallenge(challenges[currentIndex]);
+              break;
+            case 'clear':
+              clearConsole();
+              break;
+            default:
+              postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
           }
+          
         } else if (e.which === upKey || e.which === downKey) {
           retrievePreviousInput(e.which);
         }

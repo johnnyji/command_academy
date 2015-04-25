@@ -21,7 +21,7 @@
       <p class="admin-message-title">Fail Message </p>
       <p class="admin-message"><%= challenge.fail %></p>
        <p class="admin-message-title">Console Text </p>
-      <p class="admin-message"><%= challenge.console_text %></p>
+      <p class="admin-message"><%= (challenge.console_text).html_safe %></p>
 
       <a href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
       <a href="/admin/challenges/<%= challenge.id %>/delete">delete</a>
