@@ -74,6 +74,26 @@
 }
 
 
+/* start admin styles */ 
+
+.bg {
+  z-index: -1;
+  height: 100%vh;
+  width: 100%vh;
+  background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
