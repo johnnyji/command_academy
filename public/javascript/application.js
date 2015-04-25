@@ -11,9 +11,10 @@ $(function() {
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
-    var currentIndex = 0;
+    var currentChallenge = challenges[0];
     var userInputList = [];
     var lastUserInputIndex = 0;
+    var lastChallenge = challenges[challenges.length - 1];
 
     var populateInitialFields = function() {
       var initialChallenge = challenges[0];
@@ -21,8 +22,6 @@ $(function() {
       challengeTitle.text(initialChallenge.answer);
       challengeAnswer.text(initialChallenge.answer);
     };
-
-    populateInitialFields();
 
     var postConsoleResponse = function(currentChallenge, inputField) {
       if (currentChallenge.console_text !== '') {
@@ -45,23 +44,31 @@ $(function() {
       var userInputDiv = $('<div>');
       userInputDiv.text('> ' + userInput);
       userInputList.unshift(userInput);
+      $console.scrollTop($console.get(0).scrollHeight);
       return userInputDiv.insertBefore(inputField);
     }
 
-    var finished = function() {
-      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!";
+    var injectFinishedInfo = function() {
+      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
+      var winningTitle = "Congratulations!";
+      var winningAnswer = "next";
+      var errorMessage = "Wrong, type 'next' to continue!"
       challengeInstructions.text(winningMessage);
+      challengeTitle.text(winningTitle);
+      challengeAnswer.text(winningAnswer);
     };
 
-    var nextChallenge = function(level) {
-      var currentChallenge = challenges[level];
-      if (currentChallenge === challenges.last) {
-        window.location.href = '/finished';
-      } else {
-        challengeInstructions.text(currentChallenge.instructions);
-        challengeTitle.text(currentChallenge.answer);
-        challengeAnswer.text(currentChallenge.answer);
-      }
+
+    var nextChallenge = function(currentChallenge) {
+      // this will return undefined if next challenge doesn't exist
+      return challenges[challenges.indexOf(currentChallenge) + 1]
+    }
+
+    var injectChallengeInfo = function(nextChallenge) {
+      challengeInstructions.text(nextChallenge.instructions);
+      challengeTitle.text(nextChallenge.answer);
+      challengeAnswer.text(nextChallenge.answer);
+
     };
 
     var retrievePreviousInput = function(key) {
@@ -76,36 +83,69 @@ $(function() {
       }
     };
 
+    var clearConsole = function() {
+      $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
+      consoleInput = $('.console-input-field');
+      consoleInputWrapper = $('.console-input-wrapper');
+      consoleInput.focus();
+    }
+
+    var userIsAtLastChallenge = function(challenge) {
+      return (challenges.indexOf(challenge) === (challenges.length - 1));
+    }
+
+    var triggerConsoleResponse = function(userInput) {
+      switch(userInput) {
+        case currentChallenge.answer:
+          currentChallenge.finished = true;
+          postConsoleResponse(currentChallenge, consoleInputWrapper);
+          postResult(currentChallenge.success, 'success', consoleInputWrapper);
+          if (userIsAtLastChallenge(currentChallenge)) {
+            injectFinishedInfo();
+          } else {
+            currentChallenge = nextChallenge(currentChallenge);
+            injectChallengeInfo(currentChallenge);
+          }
+          break;
+        case 'clear':
+          clearConsole();
+          break;
+        case 'next':
+          if (currentChallenge.finished) {
+            window.location.href = '/finished';
+          } else {
+            postResult(lastChallenge.fail, 'fail', consoleInputWrapper);
+          }
+          break;
+        default:
+          postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
+      }
+    }
+
     var beginChallenges = function() {
       $console.on("keydown", function(e){
         if (e.which === enterKey) {
+          var userInput = $.trim(consoleInput.val());
           lastUserInputIndex = 0;
-          var userAnswer = $.trim(consoleInput.val());
-          postUserInput(userAnswer, consoleInputWrapper);
-          if (userAnswer === challenges[currentIndex].answer) {
-            var successMessageDiv = $('<div>');
-            postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
-            postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
-            currentIndex ++;
-            nextChallenge(currentIndex);
-          } else if (userAnswer === 'clear') {
-            $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
-            consoleInput = $('.console-input-field');
-            consoleInputWrapper = $('.console-input-wrapper');
-            consoleInput.focus();
-          } else {
-            postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
-          }
+          postUserInput(userInput, consoleInputWrapper);
+          triggerConsoleResponse(userInput);
         } else if (e.which === upKey || e.which === downKey) {
           retrievePreviousInput(e.which);
         }
       });
     };
-    $('.hidden').removeClass('hidden'); //this only shows the page when all JSON data has been loaded
-    beginChallenges();
 
+    var setupEnvironment = function() {
+      populateInitialFields();
+      $('.hidden').removeClass('hidden');
+      beginChallenges();
+    }
+
+    // EXECUTE APP
+    setupEnvironment();
     consoleInput.on('blur', function() {
       $(this).focus();
     });
+
   });
 });

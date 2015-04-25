@@ -128,6 +128,7 @@ challenges = [
       answer: "mv main.html index.html",
       console_text: ""
     },
+
   ].each do |challenge_hash|
 
   Challenge.where(:instructions => challenge_hash[:instructions]).first_or_create { |challenge| 

@@ -1,13 +1,13 @@
 <div class="admin-container">
   <a href="/logout">Sign out</a>
   <%= current_admin.username %>
-
+  <h1>Add A Challenge</h1>
   <form action="/admin/challenges" method="post" class="new-challenge-form">
-    <input type="text" name="answer" placeholder="Enter the command you want to teach"><br>
-    <textarea type="text" name="instructions" placeholder="Please type the instructions for your new lesson"></textarea><br>
-    <input type="text" name="success" placeholder="Please type your success message here"></input><br>
-    <input type="text" name="fail" placeholder="Please type your fail message here"></input><br>
-    <input type="text" name="console_text" placeholder="Please type the return console text here"></input><br>
+    <input class="input-1"type="text" name="answer" placeholder="Enter the command you want to teach"><br>
+    <textarea class="input-2"type="text" name="instructions" placeholder="Please type the instructions for your new lesson"></textarea><br>
+    <input class="input-3" type="text" name="success" placeholder="Please type your success message here"></input><br>
+    <input class="input-4" type="text" name="fail" placeholder="Please type your fail message here"></input><br>
+    <input class="input-5" type="text" name="console_text" placeholder="Please type the return console text here"></input><br>
     <input type="submit" value="Create Exercise">
   </form>
 
@@ -21,7 +21,7 @@
       <p class="admin-message-title">Fail Message </p>
       <p class="admin-message"><%= challenge.fail %></p>
        <p class="admin-message-title">Console Text </p>
-      <p class="admin-message"><%= challenge.console_text %></p>
+      <p class="admin-message"><%= (challenge.console_text).html_safe %></p>
 
       <a href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
       <a href="/admin/challenges/<%= challenge.id %>/delete">delete</a>

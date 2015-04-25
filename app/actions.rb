@@ -16,6 +16,10 @@ get '/challenges' do
     challenges.to_json
 end
 
+get '/finished' do
+
+end
+
 
 #ADMIN
 
