@@ -22,8 +22,6 @@ $(function() {
       challengeAnswer.text(initialChallenge.answer);
     };
 
-    populateInitialFields();
-
     var postConsoleResponse = function(currentChallenge, inputField) {
       if (currentChallenge.console_text !== '') {
         var consoleResponseDiv = $('<div>');
@@ -45,6 +43,7 @@ $(function() {
       var userInputDiv = $('<div>');
       userInputDiv.text('> ' + userInput);
       userInputList.unshift(userInput);
+      $console.scrollTop($console.get(0).scrollHeight);
       return userInputDiv.insertBefore(inputField);
     }
 
@@ -87,37 +86,56 @@ $(function() {
       consoleInput.focus();
     }
 
+    var triggerConsoleResponse = function(userInput) {
+      switch(userInput) {
+        case challenges[currentIndex].answer:
+          postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
+          postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
+          currentIndex ++;
+          nextChallenge(challenges[currentIndex]);
+          break;
+        case 'clear':
+          clearConsole();
+          break;
+        default:
+          postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
+      }
+    }
+
     var beginChallenges = function() {
       $console.on("keydown", function(e){
         if (e.which === enterKey) {
-          lastUserInputIndex = 0;
           var userInput = $.trim(consoleInput.val());
+          var finishedPage = (challengeTitle.val() === 'Congratulations');
+          lastUserInputIndex = 0;
           postUserInput(userInput, consoleInputWrapper);
 
-          switch(userInput) {
-            case challenges[currentIndex].answer:
-              postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
-              postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
-              currentIndex ++;
-              nextChallenge(challenges[currentIndex]);
-              break;
-            case 'clear':
-              clearConsole();
-              break;
-            default:
-              postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
+          if (finishedPage) {
+            if (userInput === 'next') {
+              window.location.href = '/finished';
+            }
+          } else {
+            triggerConsoleResponse(userInput);
           }
-          
+
         } else if (e.which === upKey || e.which === downKey) {
           retrievePreviousInput(e.which);
         }
+
       });
     };
-    $('.hidden').removeClass('hidden'); //this only shows the page when all JSON data has been loaded
-    beginChallenges();
 
+    var setupEnvironment = function() {
+      populateInitialFields();
+      $('.hidden').removeClass('hidden');
+      beginChallenges();
+    }
+
+    // EXECUTE APP
+    setupEnvironment();
     consoleInput.on('blur', function() {
       $(this).focus();
     });
+    
   });
 });
