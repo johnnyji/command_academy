@@ -81,7 +81,7 @@ challenges = [
       console_text: "css  img  js  main.html  stylesheet.css"
     },
       {
-      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command.\n\nmv cat.jpg img",
+      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command.\n\nmv stylesheet.css css",
       success: "SUCCESS! You moved 'stylesheet.css' into the 'css' folder",
       fail: "IncorrectInputError: Try typing the 'mv stylesheet.css css' command",
       level: 11,
