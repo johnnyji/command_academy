@@ -58,6 +58,7 @@ $(function() {
       challengeAnswer.text(winningAnswer);
     };
 
+
     var nextChallenge = function(currentChallenge) {
       // this will return undefined if next challenge doesn't exist
       return challenges[challenges.indexOf(currentChallenge) + 1]
@@ -67,6 +68,7 @@ $(function() {
       challengeInstructions.text(nextChallenge.instructions);
       challengeTitle.text(nextChallenge.answer);
       challengeAnswer.text(nextChallenge.answer);
+
     };
 
     var retrievePreviousInput = function(key) {
