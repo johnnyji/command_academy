@@ -11,9 +11,10 @@ $(function() {
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
-    var currentIndex = 0;
+    var currentChallenge = challenges[0];
     var userInputList = [];
     var lastUserInputIndex = 0;
+    var lastChallenge = challenges[challenges.length - 1];
 
     var populateInitialFields = function() {
       var initialChallenge = challenges[0];
@@ -47,7 +48,7 @@ $(function() {
       return userInputDiv.insertBefore(inputField);
     }
 
-    var finished = function() {
+    var injectFinishedInfo = function() {
       var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
@@ -57,14 +58,15 @@ $(function() {
       challengeAnswer.text(winningAnswer);
     };
 
-    var nextChallenge = function(nextChallenge) {
-      if (nextChallenge === challenges.last) {
-        finished();
-      } else {
-        challengeInstructions.text(nextChallenge.instructions);
-        challengeTitle.text(nextChallenge.answer);
-        challengeAnswer.text(nextChallenge.answer);
-      }
+    var nextChallenge = function(currentChallenge) {
+      // this will return undefined if next challenge doesn't exist
+      return challenges[challenges.indexOf(currentChallenge) + 1]
+    }
+
+    var injectChallengeInfo = function(nextChallenge) {
+      challengeInstructions.text(nextChallenge.instructions);
+      challengeTitle.text(nextChallenge.answer);
+      challengeAnswer.text(nextChallenge.answer);
     };
 
     var retrievePreviousInput = function(key) {
@@ -86,19 +88,35 @@ $(function() {
       consoleInput.focus();
     }
 
+    var userIsAtLastChallenge = function(challenge) {
+      return (challenges.indexOf(challenge) === (challenges.length - 1));
+    }
+
     var triggerConsoleResponse = function(userInput) {
       switch(userInput) {
-        case challenges[currentIndex].answer:
-          postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
-          postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
-          currentIndex ++;
-          nextChallenge(challenges[currentIndex]);
+        case currentChallenge.answer:
+          currentChallenge.finished = true;
+          postConsoleResponse(currentChallenge, consoleInputWrapper);
+          postResult(currentChallenge.success, 'success', consoleInputWrapper);
+          if (userIsAtLastChallenge(currentChallenge)) {
+            injectFinishedInfo();
+          } else {
+            currentChallenge = nextChallenge(currentChallenge);
+            injectChallengeInfo(currentChallenge);
+          }
           break;
         case 'clear':
           clearConsole();
           break;
+        case 'next':
+          if (currentChallenge.finished) {
+            window.location.href = '/finished';
+          } else {
+            postResult(lastChallenge.fail, 'fail', consoleInputWrapper);
+          }
+          break;
         default:
-          postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
+          postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
       }
     }
 
@@ -106,22 +124,12 @@ $(function() {
       $console.on("keydown", function(e){
         if (e.which === enterKey) {
           var userInput = $.trim(consoleInput.val());
-          var finishedPage = (challengeTitle.val() === 'Congratulations');
           lastUserInputIndex = 0;
           postUserInput(userInput, consoleInputWrapper);
-
-          if (finishedPage) {
-            if (userInput === 'next') {
-              window.location.href = '/finished';
-            }
-          } else {
-            triggerConsoleResponse(userInput);
-          }
-
+          triggerConsoleResponse(userInput);
         } else if (e.which === upKey || e.which === downKey) {
           retrievePreviousInput(e.which);
         }
-
       });
     };
 
@@ -136,6 +144,6 @@ $(function() {
     consoleInput.on('blur', function() {
       $(this).focus();
     });
-    
+
   });
 });
