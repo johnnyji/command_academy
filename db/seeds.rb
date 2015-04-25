@@ -32,7 +32,7 @@ challenges = [
       console_text: ""
     },
      {
-      instructions: "We can use 'ls' to see a list of items in your current directroy\n\n Go ahead and type 'ls' into the terminal",
+      instructions: "We can use 'ls' to see a list of items in your current directroy\n\nGo ahead and type 'ls' into the terminal",
       success: "SUCCESS! You've used 'ls' to see a list of items in your current directory",
       fail: "IncorrectInputError: You should try 'ls'",
       level: 5,
@@ -40,7 +40,7 @@ challenges = [
       console_text: "main.html"
     },
       {
-      instructions: "Awesome, lets Change Directories for a moment and step back to the desktop\n\n Type 'cd ..' to get back into the desktop",
+      instructions: "Awesome, lets Change Directories for a moment and step back to the desktop\n\nType 'cd ..' to get back into the desktop",
       success: "SUCCESS! You're now currently on Desktop ",
       fail: "IncorrectInputError: You should try 'cd ..'",
       level: 6,
@@ -48,7 +48,7 @@ challenges = [
       console_text: "/Users/owner/desktop"
     },
      {
-      instructions: "Great job!  Now we want to create multiple directories.  We can do this all on one line using the '&&' command in between our 'mkdir folder_name' .\n\nTry it out, type 'mkdir css && mkdir js && mkdir img' in the console",
+      instructions: "Great job!  Now we want to create multiple directories.  We can do this all on one line using the '&&' command in between our 'mkdir folder_name'\n\nTry it out, type 'mkdir css && mkdir js && mkdir img' in the console",
       success: "SUCCESS! You've made three folders in one step",
       fail: "IncorrectInputError: You should try 'mkdir css && mkdir js && mkdir img'",
       level: 7,
@@ -56,7 +56,7 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Alright, now take a look at the folders we've created by typing 'ls' into the console\n\n",
+      instructions: "Alright, now take a look at the folders we've created by typing 'ls' into the console",
       success: "SUCCESS! You used the 'ls' command",
       fail: "IncorrectInputError: Try typing 'ls' into the console",
       level: 8,
@@ -73,7 +73,7 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be\n\n Type 'ls' into the console",
+      instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be\n\nType 'ls' into the console",
       success: "SUCCESS! you've used the 'ls' command",
       fail: "IncorrectInputError: try the 'ls' command",
       level: 10,
@@ -81,7 +81,7 @@ challenges = [
       console_text: "css  img  js  main.html  stylesheet.css"
     },
       {
-      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command.\n\n mv cat.jpg img ",
+      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command.\n\nmv cat.jpg img",
       success: "SUCCESS! You moved 'stylesheet.css' into the 'css' folder",
       fail: "IncorrectInputError: Try typing the 'mv stylesheet.css css' command",
       level: 11,
@@ -121,7 +121,7 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Good Job! Not only can we move files, we can rename files using the 'mv' command\n\n Type 'mv main.html index.html'",
+      instructions: "Good Job! Not only can we move files, we can rename files using the 'mv' command\n\nType 'mv main.html index.html'",
       success: "SUCCESS! You renamed the file",
       fail: "IncorrectInputError: use the 'mv main.html index.html' command",
       level: 16,
