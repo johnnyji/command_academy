@@ -1,8 +1,23 @@
 enable :sessions
 
+# USER
+
 get '/' do
   erb :index
 end
+
+get '/begin' do
+  erb :challenges
+end
+
+get '/challenges' do
+  challenges = Challenge.all.order(level: :asc)
+  content_type :json
+    challenges.to_json
+end
+
+
+#ADMIN
 
 get '/signup' do
   erb :'admin/signup'
@@ -42,25 +57,36 @@ get '/admin/index' do
   erb :'admin/index'
 end
 
-get '/begin' do
-  erb :challenges
-end
-
-get '/challenges' do
-  challenges = Challenge.all.order(level: :asc)
-  content_type :json
-    challenges.to_json
-end
-
-post '/challenges/create' do
-  @last_level = Challenge.last.level + 1
-  @new_challenge = Challenge.new(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer], level: @last_level)
-  if @new_challenge.save
+post '/admin/challenges' do
+  new_level = Challenge.count + 1
+  challenge = Challenge.new(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer], level: new_level)
+  if challenge.save
     redirect to('/admin/index')
   else
-    erb :'challenges/create'
+    erb :'admin/index'
   end
-  
+end
+
+get '/admin/challenges/:id/delete' do
+  challenge = Challenge.find(params[:id])
+  Challenge.update_levels(challenge.level)
+  challenge.destroy
+  redirect to('/admin/index')
+end
+
+get '/admin/challenges/:id/edit' do
+  @challenge = Challenge.find(params[:id])
+  erb :'admin/edit'
+end
+
+post '/admin/challenges/:id/edit' do
+  @challenge = Challenge.update(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer])
+  if @challenge.persisted?
+    redirect to('/admin/index')
+  else
+    #flash error = sorry didnt save properly
+    erb :'admin/edit'
+  end
 end
 
 helpers do

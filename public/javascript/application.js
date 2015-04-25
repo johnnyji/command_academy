@@ -1,18 +1,19 @@
 $(function() {
   var $console = $('.console');
 
-  $console.on('click', function(e){
-    $console.find('input').focus();
-  });
-
   $.getJSON('/challenges').then(function(data) {
+    var enterKey = 13;
+    var upKey = 38;
+    var downKey = 40;
     var challenges = data;
     var challengeInstructions = $('.challenge-instructions');
     var challengeTitle = $('.challenge-title');
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
-    var currentLevel = 0;
+    var currentIndex = 0;
+    var userInputList = [];
+    var lastUserInputIndex = 0;
 
     var populateInitialFields = function() {
       var initialChallenge = challenges[0];
@@ -23,10 +24,10 @@ $(function() {
 
     populateInitialFields();
 
-    var postConsoleResponse = function(currentLevel, inputField) {
-      if (currentLevel.console_text !== '') {
+    var postConsoleResponse = function(currentChallenge, inputField) {
+      if (currentChallenge.console_text !== '') {
         var consoleResponseDiv = $('<div>');
-        consoleResponseDiv.addClass('console-response').text(currentLevel.console_text);
+        consoleResponseDiv.addClass('console-response').text(currentChallenge.console_text);
         return consoleResponseDiv.insertBefore(inputField);
       }
     };
@@ -43,6 +44,7 @@ $(function() {
       consoleInput.val('');
       var userInputDiv = $('<div>');
       userInputDiv.text('> ' + userInput);
+      userInputList.unshift(userInput);
       return userInputDiv.insertBefore(inputField);
     }
 
@@ -62,49 +64,48 @@ $(function() {
       }
     };
 
-    // var initialCommand = function() {
-    //   status = true;
-    //   var readyToBegin = consoleInput.keydown(function(e) {
-    //     var userInput = consoleInput.val();
-    //     if (e.which === 13 && userInput === 'begin') {
-    //       postUserInput(userInput, consoleInputWrapper);
-    //       postResult('Hooray! Let\'s begin!', 'success', consoleInputWrapper);
-    //       return true;
-    //       // have it exit out of the entire initial command function
-    //     } else if (e.which === 13) {
-    //       consoleInput.val('');
-    //       postUserInput(userInput, consoleInputWrapper);
-    //       postResult('WrongCommandError: Try entering "begin" into the console', 'fail', consoleInputWrapper);
-    //       readyToBegin();
-    //     }
-    //   });
-    //   if (readyToBegin) { status = false };
-    //   return status
-    // };
+    var retrievePreviousInput = function(key) {
+      var topOfPreviousInputs = (lastUserInputIndex === (userInputList.length - 1))
+      var bottomOfPreviousInputs = (lastUserInputIndex === 0)
+      if (key === upKey) {
+        consoleInput.val(userInputList[lastUserInputIndex]);
+        if (!topOfPreviousInputs) { lastUserInputIndex ++; } 
+      } else if (key === downKey) {
+        consoleInput.val(userInputList[lastUserInputIndex]);
+        if (!bottomOfPreviousInputs) { lastUserInputIndex --; }
+      }
+    };
 
     var beginChallenges = function() {
       $console.on("keydown", function(e){
-        if (e.which === 13) {
+        if (e.which === enterKey) {
+          lastUserInputIndex = 0;
           var userAnswer = $.trim(consoleInput.val());
           postUserInput(userAnswer, consoleInputWrapper);
-          if (userAnswer === challenges[currentLevel].answer) {
+          if (userAnswer === challenges[currentIndex].answer) {
             var successMessageDiv = $('<div>');
-            postConsoleResponse(challenges[currentLevel], consoleInputWrapper);
-            postResult(challenges[currentLevel].success, 'success', consoleInputWrapper);
-            currentLevel ++;
-            nextChallenge(currentLevel);
+            postConsoleResponse(challenges[currentIndex], consoleInputWrapper);
+            postResult(challenges[currentIndex].success, 'success', consoleInputWrapper);
+            currentIndex ++;
+            nextChallenge(currentIndex);
           } else if (userAnswer === 'clear') {
             $console.html('<div class="console-input-wrapper">$<input class="console-input-field" autofocus></input></div>');
             consoleInput = $('.console-input-field');
             consoleInputWrapper = $('.console-input-wrapper');
             consoleInput.focus();
           } else {
-            postResult(challenges[currentLevel].fail, 'fail', consoleInputWrapper);
+            postResult(challenges[currentIndex].fail, 'fail', consoleInputWrapper);
           }
+        } else if (e.which === upKey || e.which === downKey) {
+          retrievePreviousInput(e.which);
         }
       });
     };
     $('.hidden').removeClass('hidden'); //this only shows the page when all JSON data has been loaded
-    beginChallenges(); 
+    beginChallenges();
+
+    consoleInput.on('blur', function() {
+      $(this).focus();
+    });
   });
 });
