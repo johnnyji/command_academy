@@ -1,13 +1,10 @@
+.index {
+  font-family: courier;
+}
+
 .index-wrapper {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 45%; 
-  padding: 1em;
-  width: 70vw;
-  height: 400px;
-  color: #EEEEEE;
-  background-color: #202020;
+  color: #EEEEEE;/*
+  background-color: red;*/
   text-align: center;
 }
 
@@ -20,7 +17,7 @@
   margin: 0 auto;
   width: 400px;
   letter-spacing: 1px;
-  text-align: left;
+  text-align: center;
   font-size: 1.5em;
 }
 
@@ -44,4 +41,11 @@
 
 .index-input-field:focus {
   outline: none;
+}
+
+/* style admin links */
+
+.admin-link a {
+  text-decoration: none;
+  color: #fff;
 }
