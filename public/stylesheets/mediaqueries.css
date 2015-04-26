@@ -16,6 +16,11 @@
   width: 40%;
  }
  .resolution {
-  display:hidden; visibility: hidden
+  display:hidden; 
+  visibility: hidden;
  }
+}
+
+@media (min-width: 0) and (max-width: 640px) {
+  .admin-form-title: .8em;
 }
