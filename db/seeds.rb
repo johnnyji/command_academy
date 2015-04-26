@@ -236,7 +236,25 @@ challenges = [
           |-- js
           |"
     },
-    
+      {
+      instructions: "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.",
+      success: "SUCCESS!",
+      fail: "IncorrectInputError: use the 'next' command",
+      level: 17,
+      answer: "next",
+      console_text: "",
+      ascii: "
+      desktop
+      .
+      |-- $ project
+          .
+          |-- index.html
+          |-- ruby
+          |-- css
+          |-- js
+          |"
+    },
+
   ].each do |challenge_hash|
 
   Challenge.where(:instructions => challenge_hash[:instructions]).first_or_create { |challenge| 
