@@ -83,7 +83,8 @@ get '/admin/challenges/:id/edit' do
 end
 
 post '/admin/challenges/:id/edit' do
-  @challenge = Challenge.update(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer])
+  @challenge = Challenge.find(params[:id])
+  @challenge.update(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer])
   if @challenge.persisted?
     redirect to('/admin/index')
   else

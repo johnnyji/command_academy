@@ -3,7 +3,7 @@ $(function() {
   $('.index-input-field').on('blur', function() {
     $(this).focus();
   });
-
+  
   var nudgeElement = function(element) {
     element.addClass('animated shake');
     setTimeout(function() {
