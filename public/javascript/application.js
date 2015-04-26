@@ -114,7 +114,7 @@ $(function() {
           postConsoleResponse(currentChallenge, consoleInputWrapper);
           postResult(currentChallenge.success, 'success', consoleInputWrapper);
           if (userIsAtLastChallenge(currentChallenge)) {
-            injectFinishedInfo();
+            window.location.href = '/finished';
           } else {
             currentChallenge = nextChallenge(currentChallenge);
             injectChallengeInfo(currentChallenge);
@@ -122,13 +122,6 @@ $(function() {
           break;
         case 'clear':
           clearConsole();
-          break;
-        case 'next':
-          if (currentChallenge.finished) {
-            window.location.href = '/finished';
-          } else {
-            postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
-          }
           break;
         default:
           postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
