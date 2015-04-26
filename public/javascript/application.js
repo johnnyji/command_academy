@@ -8,6 +8,7 @@ $(function() {
     var challenges = data;
     var challengeInstructions = $('.challenge-instructions');
     var challengeTitle = $('.challenge-title');
+    var challengeLevel = $('.current-level');
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
@@ -22,6 +23,7 @@ $(function() {
       challengeInstructions.text(initialChallenge.instructions);
       challengeTitle.text(initialChallenge.answer);
       challengeAnswer.text(initialChallenge.answer);
+      challengeLevel.text(currentChallenge.level);
       asciiBox.text(initialChallenge.ascii);
     };
 
@@ -50,28 +52,6 @@ $(function() {
       return userInputDiv.insertBefore(inputField);
     }
 
-    var injectFinishedInfo = function() {
-      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
-      var winningTitle = "Congratulations!";
-      var winningAnswer = "next";
-      var errorMessage = "Wrong, type 'next' to continue!";
-      // var lastAscii = "<pre class='ascii'>
-      // desktop
-      // .
-      // |-- $ project
-      //     .
-      //     |-- index.html
-      //     |-- ruby
-      //     |-- css
-      //     |-- js
-      //     |</pre>";
-      // asciiBox.html(lastAscii);
-      challengeInstructions.text(winningMessage);
-      challengeTitle.text(winningTitle);
-      challengeAnswer.text(winningAnswer);
-    };
-
-
     var nextChallenge = function(currentChallenge) {
       // this will return undefined if next challenge doesn't exist
       return challenges[challenges.indexOf(currentChallenge) + 1];
@@ -81,6 +61,7 @@ $(function() {
       challengeInstructions.text(nextChallenge.instructions);
       challengeTitle.text(nextChallenge.answer);
       challengeAnswer.text(nextChallenge.answer);
+      challengeLevel.text(nextChallenge.level);
       asciiBox.text(nextChallenge.ascii);
     };
 

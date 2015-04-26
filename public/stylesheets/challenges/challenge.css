@@ -9,8 +9,16 @@
   background-color: #000;
 }
 
-.challenge-title {
+.challenge-level {
+  display: inline-block;
+  float: right;
+  max-width: 20%;
+}
 
+.challenge-title {
+  display: inline-block;
+  float: left;
+  max-width: 79%;
   font-weight: bold;
   letter-spacing: 2px;
   font-size: 2em;
@@ -20,6 +28,7 @@
 
 .challenge-instructions {
   white-space: pre-wrap;
+  clear: both;
 }
 
 .challenge-answer {
