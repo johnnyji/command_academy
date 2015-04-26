@@ -11,6 +11,7 @@ $(function() {
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
+    var asciiBox = $('.ascii');
     var currentChallenge = challenges[0];
     var userInputList = [];
     var lastUserInputIndex = 0;
@@ -21,6 +22,7 @@ $(function() {
       challengeInstructions.text(initialChallenge.instructions);
       challengeTitle.text(initialChallenge.answer);
       challengeAnswer.text(initialChallenge.answer);
+      asciiBox.text(initialChallenge.ascii);
     };
 
     var postConsoleResponse = function(currentChallenge, inputField) {
@@ -53,6 +55,17 @@ $(function() {
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
       var errorMessage = "Wrong, type 'next' to continue!";
+      // var lastAscii = "
+      // desktop
+      // .
+      // |-- $ project
+      //     .
+      //     |-- index.html
+      //     |-- ruby
+      //     |-- css
+      //     |-- js
+      //     |";
+      // asciiBox.text(lastAscii);
       challengeInstructions.text(winningMessage);
       challengeTitle.text(winningTitle);
       challengeAnswer.text(winningAnswer);
@@ -68,7 +81,7 @@ $(function() {
       challengeInstructions.text(nextChallenge.instructions);
       challengeTitle.text(nextChallenge.answer);
       challengeAnswer.text(nextChallenge.answer);
-
+      asciiBox.text(nextChallenge.ascii);
     };
 
     var retrievePreviousInput = function(key) {
