@@ -1,3 +1,4 @@
+<div class="bg">
 <div class="admin-container">
   <a href="/logout">Sign out</a>
   <%= current_admin.username %>
@@ -23,8 +24,9 @@
        <p class="admin-message-title">Console Text </p>
       <p class="admin-message"><%= (challenge.console_text).html_safe %></p>
 
-      <a href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
-      <a href="/admin/challenges/<%= challenge.id %>/delete">delete</a>
+      <a class="edit" href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
+      <a class="delete" shref="/admin/challenges/<%= challenge.id %>/delete">delete</a>
     </div>
   <% end %>
 </div>
+</div> <!--end bg -->

@@ -9,6 +9,12 @@
 }
 
 .index-title {
+  margin-top: 15%;
+  font-size: 5em;
+  letter-spacing: 1px;  
+}
+.index-title-login {
+  margin-top: 20%;
   font-size: 3em;
   letter-spacing: 1px;  
 }
