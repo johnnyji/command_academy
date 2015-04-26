@@ -55,7 +55,7 @@ $(function() {
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
       var errorMessage = "Wrong, type 'next' to continue!";
-      // var lastAscii = "
+      // var lastAscii = "<pre class='ascii'>
       // desktop
       // .
       // |-- $ project
@@ -64,8 +64,8 @@ $(function() {
       //     |-- ruby
       //     |-- css
       //     |-- js
-      //     |";
-      // asciiBox.text(lastAscii);
+      //     |</pre>";
+      // asciiBox.html(lastAscii);
       challengeInstructions.text(winningMessage);
       challengeTitle.text(winningTitle);
       challengeAnswer.text(winningAnswer);
