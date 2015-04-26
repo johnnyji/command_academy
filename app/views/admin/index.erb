@@ -17,13 +17,6 @@
       <p class="admin-challenge-level">Level <%= challenge.level %></p>  
       <p class="admin-challenge-title"><%= challenge.answer %></p>
       <pre class="admin-challenge-instructions"><%= challenge.instructions %></pre>
-      <p class="admin-message-title">Success Message </p>
-      <p class="admin-message"><%= challenge.success %></p>
-      <p class="admin-message-title">Fail Message </p>
-      <p class="admin-message"><%= challenge.fail %></p>
-       <p class="admin-message-title">Console Text </p>
-      <p class="admin-message"><%= (challenge.console_text).html_safe %></p>
-
       <a class="edit" href="/admin/challenges/<%= challenge.id %>/edit">edit</a> |
       <a class="delete" shref="/admin/challenges/<%= challenge.id %>/delete">delete</a>
     </div>
