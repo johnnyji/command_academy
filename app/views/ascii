@@ -1,0 +1,146 @@
+
+$ desktop
+.
+
+
+
+
+
+$ desktop
+.
+|-- project
+
+
+
+
+
+desktop
+.
+|-- $ project
+    |-- main.html
+    |
+
+
+
+desktop
+.
+|-- $ project
+    |-- main.html
+    |
+
+
+
+desktop
+.
+|-- $ project
+    |-- main.html
+    |-- css
+    |-- img
+    |-- js
+    |
+
+
+
+desktop
+.
+|-- $ project
+    |-- main.html
+    |-- css
+    |-- img
+    |-- js
+    |
+
+
+
+desktop
+.
+|-- $ project
+    |-- main.html
+    |-- css
+    |-- img
+    |-- js
+    |-- stylesheet.css
+    |
+
+
+
+desktop
+.
+|-- $ project
+    .
+    |-- main.html
+    |-- css
+    |    |-- stylesheet.css 
+    |
+    |-- img
+    |-- js
+    |
+
+
+
+
+
+desktop
+.
+|-- $ project
+    .
+    |-- main.html
+    |-- ruby
+    |-- img
+    |-- js
+    |
+
+
+
+desktop
+.
+|-- project
+    .
+    |-- main.html
+    |-- $ ruby
+    |-- img
+    |-- js
+    |
+
+
+desktop
+.
+|-- project
+    .
+    |-- main.html
+    |-- $ ruby
+    |   |-- ruby.rb
+    |
+    |-- img
+    |-- js
+    |
+
+
+desktop
+.
+|-- $ project
+    .
+    |-- main.html
+    |-- ruby
+    |-- img
+    |-- js
+    |
+
+
+
+desktop
+.
+|-- $ project
+    .
+    |-- index.html
+    |-- ruby
+    |-- img
+    |-- js
+    |
+
+
+
+
+
+
+

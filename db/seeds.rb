@@ -64,13 +64,25 @@ challenges = [
 
       console_text: ""
     },
-      {
-      instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be",
-      success: "SUCCESS! you've used the 'ls' command",
-      fail: "IncorrectInputError: try the 'ls' command",
-      level: 10,
-      answer: "ls",
-      console_text: "css  img  js  main.html  stylesheet.css"
+    {
+    instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be",
+    success: "SUCCESS! you've used the 'ls' command",
+    fail: "IncorrectInputError: try the 'ls' command",
+    level: 10,
+    answer: "ls",
+    console_text: "css  img  js  main.html  stylesheet.css",
+    ascii: "
+    desktop
+    .
+    |-- project
+        .
+        |-- main.html
+        |-- $ ruby
+        |   |-- ruby.rb
+        |
+        |-- img
+        |-- js
+        |"
     },
       {
       instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command",
