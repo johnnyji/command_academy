@@ -52,7 +52,7 @@ $(function() {
       var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
-      var errorMessage = "Wrong, type 'next' to continue!"
+      var errorMessage = "Wrong, type 'next' to continue!";
       challengeInstructions.text(winningMessage);
       challengeTitle.text(winningTitle);
       challengeAnswer.text(winningAnswer);
@@ -61,7 +61,7 @@ $(function() {
 
     var nextChallenge = function(currentChallenge) {
       // this will return undefined if next challenge doesn't exist
-      return challenges[challenges.indexOf(currentChallenge) + 1]
+      return challenges[challenges.indexOf(currentChallenge) + 1];
     }
 
     var injectChallengeInfo = function(nextChallenge) {

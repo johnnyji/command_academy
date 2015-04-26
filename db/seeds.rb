@@ -39,16 +39,8 @@ challenges = [
       answer: "ls",
       console_text: "main.html"
     },
-      {
-      instructions: "Awesome, lets Change Directories for a moment and step back to the desktop\n\nType 'cd ..' to get back into the desktop",
-      success: "SUCCESS! You're now currently on Desktop ",
-      fail: "IncorrectInputError: You should try 'cd ..'",
-      level: 6,
-      answer: "cd ..",
-      console_text: "/Users/owner/desktop"
-    },
      {
-      instructions: "Great job!  Now we want to create multiple directories.  We can do this all on one line using the '&&' command in between our 'mkdir folder_name'\n\nTry it out, type 'mkdir css && mkdir js && mkdir img' in the console",
+      instructions: "Great job!  Now we want to create multiple directories.  We can do this all on one line using the '&&' command in between our 'mkdir folder_name' commands\n\nTry it out, type 'mkdir css && mkdir js && mkdir img' in the console",
       success: "SUCCESS! You've made three folders in one step",
       fail: "IncorrectInputError: You should try 'mkdir css && mkdir js && mkdir img'",
       level: 7,
@@ -64,7 +56,7 @@ challenges = [
       console_text: "css  img  js  main.html"
     },
       {
-      instructions: "So far, so good!  Let's create another file using our 'touch filename' command.  We'll need a css stylesheet so try typing 'touch stylesheet.css' into the terminal. ",
+      instructions: "So far, so good!  Let's create another file using our 'touch filename' command.  We'll need a css stylesheet so try out the command using 'stylesheet.css' as the filename",
       success: "SUCCESS! You have created a file named stylesheet.css'",
       fail: "IncorrectInputError: Try the 'touch stylesheet.css' command",
       level: 8,
@@ -73,7 +65,7 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be\n\nType 'ls' into the console",
+      instructions: "Nice! If you type 'ls' in the console you can see the file you created is not where it should be",
       success: "SUCCESS! you've used the 'ls' command",
       fail: "IncorrectInputError: try the 'ls' command",
       level: 10,
@@ -81,7 +73,7 @@ challenges = [
       console_text: "css  img  js  main.html  stylesheet.css"
     },
       {
-      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command.\n\nmv stylesheet.css css",
+      instructions: "Cool! Now we can move the file into the proper directory using the 'mv source destination' command",
       success: "SUCCESS! You moved 'stylesheet.css' into the 'css' folder",
       fail: "IncorrectInputError: Try typing the 'mv stylesheet.css css' command",
       level: 11,
@@ -91,13 +83,13 @@ challenges = [
  {
       instructions: "Now we're rolling! Lets remove our img directory and add a ruby directory using the 'rm' command\n\nType 'rm -rf img && mkdir ruby' in the console",
       success: "SUCCESS! You removed img and created a ruby directory",
-      fail: "IncorrectInputError: use the 'rm -rf img && mkdir ruby' command  ",
+      fail: "IncorrectInputError: use the 'rm -rf img && mkdir ruby' command",
       level: 12,
       answer: "rm -rf img && mkdir ruby",
       console_text: ""
     },
  {
-      instructions: "Lets move into our ruby directory using the 'cd ruby' command\n\nType 'cd ruby' in the console",
+      instructions: "Lets move into our ruby directory using the 'cd ruby' command",
       success: "SUCCESS! You have moved into the ruby folder",
       fail: "IncorrectInputError: use the 'cd ruby' command",
       level: 13,
@@ -105,7 +97,7 @@ challenges = [
       console_text: ""
     },
  {
-      instructions: "We want to create one more file in this folder.  Let's use our 'touch filename' command one more time\n\nGo ahead and try typing 'touch ruby.rb' into the console",
+      instructions: "We want to create one more file in this folder.  Let's use our 'touch filename' command one more time\n\nGo ahead and try it out!",
       success: "SUCCESS! You have created a 'ruby.rb' file",
       fail: "IncorrectInputError: use the 'touch ruby.rb' command",
       level: 14,
@@ -113,7 +105,7 @@ challenges = [
       console_text: ""
     },
  {
-      instructions: "Let's step back out of the 'ruby' folder using the 'cd ..' command",
+      instructions: "We can step back out of the 'ruby' folder and into the parent directory by using the 'cd ..' command",
       success: "SUCCESS! You have moved back to project folder",
       fail: "IncorrectInputError: use the 'cd ..' command",
       level: 15,
@@ -121,7 +113,7 @@ challenges = [
       console_text: ""
     },
       {
-      instructions: "Good Job! Not only can we move files, we can rename files using the 'mv' command\n\nType 'mv main.html index.html'",
+      instructions: "Good Job! Not only can we move files, we can rename files using the 'mv filename newname' command\n\n",
       success: "SUCCESS! You renamed the file",
       fail: "IncorrectInputError: use the 'mv main.html index.html' command",
       level: 16,

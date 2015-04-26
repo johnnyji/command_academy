@@ -23,6 +23,7 @@ line-height: 1.5em;
 }
 
 #window-two{
+    position: relative;
     width: 90%;
     height: 90%;
     margin-top:40px;
