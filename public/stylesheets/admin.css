@@ -69,6 +69,14 @@
 
 }
 
+.admin-form-title{
+  margin-top: 20%;
+  font-size: 5em;
+  letter-spacing: 1px;  
+}
+
+
+
 .admin-challenge-instructions{
   white-space: pre-wrap;
 }

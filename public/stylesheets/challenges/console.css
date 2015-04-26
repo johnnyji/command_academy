@@ -22,6 +22,22 @@ line-height: 1.5em;
     overflow: hidden; 
 }
 
+#window-two{
+    width: 90%;
+    height: 90%;
+    margin-top:40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:40px;
+    min-width: 500px; 
+    background: #000;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+    /*-webkit-transition:all 0.5s; */
+    overflow: hidden; 
+}
+
 /* TOP BAR */
 #topbar{
     width: 100%;
