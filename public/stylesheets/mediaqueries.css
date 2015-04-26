@@ -1,0 +1,21 @@
+
+@media (min-width: 500px) and (max-width: 1240px) { 
+  #title {
+  width: 40%;
+ }
+}
+
+@media (min-width: 0) and (max-width: 1000px) { 
+  .index-title {
+  line-height: .9em;
+ }
+}
+
+@media (min-width: 0) and (max-width: 840px) { 
+  #title {
+  width: 40%;
+ }
+ .resolution {
+  display:hidden; visibility: hidden
+ }
+}
