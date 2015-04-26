@@ -1,15 +1,4 @@
 <div class="bg">
-<<<<<<< HEAD
-<h1 class="edit-title">Edit Challenge</h1>
-<form action="/admin/challenges/<%= @challenge.id %>/edit" method="post" class="new-challenge-form">
-  <input type="text" name="answer" placeholder="Enter the command you want to teach" value="<%= @challenge.answer %>"><br>
-  <textarea type="text" name="instructions" placeholder="Please type the instructions for your new lesson"><%= @challenge.instructions %></textarea><br>
-  <input type="text" name="success" placeholder="Please type your success message here" value="<%= @challenge.success %>"></input><br>
-  <input type="text" name="fail" placeholder="Please type your fail message here" value="<%= @challenge.fail %>"></input><br>
-  <input type="text" name="console_text" placeholder="Please type the return console text here" value="<%= @challenge.console_text %>"></input><br>
-  <input type="submit" value="Create Exercise">
-</form>
-=======
   <div class="edit-container">
     <a href="/logout">Sign out</a>
     <%= current_admin.username %>
@@ -24,5 +13,4 @@
       <input type="submit" value="Submit Changes">
     </form>
   </div>
->>>>>>> 0a948d84ce06baddf5a41a016b8b074801a685ab
 </div>
