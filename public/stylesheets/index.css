@@ -3,8 +3,7 @@
 }
 
 .index-wrapper {
-  color: #EEEEEE;/*
-  background-color: red;*/
+  color: #EEEEEE;
   text-align: center;
 }
 
@@ -53,5 +52,5 @@
 
 .admin-link a {
   text-decoration: none;
-  color: #fff;
+  color: #666;
 }
