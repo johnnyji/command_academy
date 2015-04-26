@@ -55,7 +55,7 @@ $(function() {
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
       var errorMessage = "Wrong, type 'next' to continue!";
-      // var lastAscii = "
+      // var lastAscii = "<pre class='ascii'>
       // desktop
       // .
       // |-- $ project
@@ -64,8 +64,8 @@ $(function() {
       //     |-- ruby
       //     |-- css
       //     |-- js
-      //     |";
-      // asciiBox.text(lastAscii);
+      //     |</pre>";
+      // asciiBox.html(lastAscii);
       challengeInstructions.text(winningMessage);
       challengeTitle.text(winningTitle);
       challengeAnswer.text(winningAnswer);
@@ -114,7 +114,7 @@ $(function() {
           postConsoleResponse(currentChallenge, consoleInputWrapper);
           postResult(currentChallenge.success, 'success', consoleInputWrapper);
           if (userIsAtLastChallenge(currentChallenge)) {
-            injectFinishedInfo();
+            window.location.href = '/finished';
           } else {
             currentChallenge = nextChallenge(currentChallenge);
             injectChallengeInfo(currentChallenge);
@@ -122,13 +122,6 @@ $(function() {
           break;
         case 'clear':
           clearConsole();
-          break;
-        case 'next':
-          if (currentChallenge.finished) {
-            window.location.href = '/finished';
-          } else {
-            postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
-          }
           break;
         default:
           postResult(currentChallenge.fail, 'fail', consoleInputWrapper);
