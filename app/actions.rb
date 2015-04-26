@@ -16,11 +16,6 @@ get '/challenges' do
     challenges.to_json
 end
 
-get '/finished' do
-
-end
-
-
 #ADMIN
 
 get '/signup' do
@@ -35,6 +30,10 @@ post '/signup' do
   else
     erb :'admin/signup'
   end
+end
+
+get '/finished' do
+  erb :finished
 end
 
 get '/login' do
@@ -92,6 +91,9 @@ post '/admin/challenges/:id/edit' do
     erb :'admin/edit'
   end
 end
+
+
+
 
 helpers do
   def admin_count
