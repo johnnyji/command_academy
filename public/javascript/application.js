@@ -55,6 +55,17 @@ $(function() {
       var winningTitle = "Congratulations!";
       var winningAnswer = "next";
       var errorMessage = "Wrong, type 'next' to continue!";
+      // var lastAscii = "
+      // desktop
+      // .
+      // |-- $ project
+      //     .
+      //     |-- index.html
+      //     |-- ruby
+      //     |-- css
+      //     |-- js
+      //     |";
+      // asciiBox.text(lastAscii);
       challengeInstructions.text(winningMessage);
       challengeTitle.text(winningTitle);
       challengeAnswer.text(winningAnswer);
