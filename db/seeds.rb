@@ -236,7 +236,7 @@ challenges = [
           |-- js
           |"
     },
-
+    
   ].each do |challenge_hash|
 
   Challenge.where(:instructions => challenge_hash[:instructions]).first_or_create { |challenge| 
