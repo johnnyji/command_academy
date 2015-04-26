@@ -21,6 +21,13 @@
  }
 }
 
-@media (min-width: 0) and (max-width: 640px) {
-  .admin-form-title: .8em;
+@media (min-width: 0) and (max-width: 635px) {
+  .admin-form-title, .admin-form-title {
+    line-height: .8em;
+  }
+}
+
+/* begin styles */
+@media (min-width: 0) and (max-width: 1275px) {
+  
 }
