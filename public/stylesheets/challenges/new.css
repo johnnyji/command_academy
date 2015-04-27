@@ -2,12 +2,14 @@
   text-align: center;
   margin: 0 auto;
   padding: 1.5em;
+  color:black;
 }
 
 .new-challenge-form input[type=text] {
   width: 400px;
   margin-bottom: 1em;
   padding: 0.3em;
+
 }
 
 .new-challenge-form textarea {
@@ -16,5 +18,11 @@
   height: 225px;
   padding: 0.3em;
   margin-bottom: 1em;
+ 
   /*IMPORTANT, this will ensure that whatever the user types into the textarea, including line breaks is, is what will be saved to the database*/
+}
+
+.edit-title {
+  margin: 1em auto;
+  text-align: center;
 }

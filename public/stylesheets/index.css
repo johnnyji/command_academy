@@ -3,12 +3,17 @@
 }
 
 .index-wrapper {
-  color: #EEEEEE;/*
-  background-color: red;*/
+  color: #EEEEEE;
   text-align: center;
 }
 
 .index-title {
+  margin-top: 15%;
+  font-size: 5em;
+  letter-spacing: 1px;  
+}
+.index-title-login {
+  margin-top: 20%;
   font-size: 3em;
   letter-spacing: 1px;  
 }
@@ -24,6 +29,7 @@
 .index-input-wrapper {
   font-size: 1.5em;
   margin-top: 2em;
+  margin-bottom: 4em;
 }
 
 .index-instructions{
@@ -47,5 +53,5 @@
 
 .admin-link a {
   text-decoration: none;
-  color: #fff;
+  color: #666;
 }

@@ -4,9 +4,19 @@ html, body {
 }
 *, *:before, *:after {
   box-sizing: inherit;
+  font-family: courier;
 }
 
 .hidden {
   position: relative;
   display: none;
 }
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+
+
+

@@ -36,6 +36,13 @@
   padding: 5px;
 }
 
+.edit-container {
+  margin: 0 auto;
+  width: 600px;
+  height: 100%;
+  padding: 5px;
+}
+
 .admin-challenge-container {
   padding: 10px 10px 20px 10px;
   margin: 30px 0;
@@ -69,9 +76,37 @@
 
 }
 
+.admin-form-title{
+  margin-top: 20%;
+  font-size: 5em;
+  letter-spacing: 1px;  
+}
+
+
+
 .admin-challenge-instructions{
   white-space: pre-wrap;
 }
+
+
+/* start admin styles */ 
+
+.bg {
+  z-index: -1;
+  height: 100%vh;
+  width: 100%vh;
+  background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

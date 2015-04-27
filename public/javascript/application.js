@@ -8,9 +8,11 @@ $(function() {
     var challenges = data;
     var challengeInstructions = $('.challenge-instructions');
     var challengeTitle = $('.challenge-title');
+    var challengeLevel = $('.current-level');
     var challengeAnswer = $('.challenge-answer');
     var consoleInput = $('.console-input-field');
     var consoleInputWrapper = $('.console-input-wrapper');
+    var asciiBox = $('.ascii');
     var currentChallenge = challenges[0];
     var userInputList = [];
     var lastUserInputIndex = 0;
@@ -21,6 +23,8 @@ $(function() {
       challengeInstructions.text(initialChallenge.instructions);
       challengeTitle.text(initialChallenge.answer);
       challengeAnswer.text(initialChallenge.answer);
+      challengeLevel.text(currentChallenge.level);
+      asciiBox.text(initialChallenge.ascii);
     };
 
     var postConsoleResponse = function(currentChallenge, inputField) {
@@ -48,25 +52,17 @@ $(function() {
       return userInputDiv.insertBefore(inputField);
     }
 
-    var injectFinishedInfo = function() {
-      var winningMessage = "Amazing job! You now have the ability to perform the basic UNIX commands it takes in order to make and find any directory on your computer!\n\nThere's no excuse to ever make a folder by manually clicking the desktop ever again!\n\n Type 'next' into the console.";
-      var winningTitle = "Congratulations!";
-      var winningAnswer = "next";
-      var errorMessage = "Wrong, type 'next' to continue!"
-      challengeInstructions.text(winningMessage);
-      challengeTitle.text(winningTitle);
-      challengeAnswer.text(winningAnswer);
-    };
-
     var nextChallenge = function(currentChallenge) {
       // this will return undefined if next challenge doesn't exist
-      return challenges[challenges.indexOf(currentChallenge) + 1]
+      return challenges[challenges.indexOf(currentChallenge) + 1];
     }
 
     var injectChallengeInfo = function(nextChallenge) {
       challengeInstructions.text(nextChallenge.instructions);
       challengeTitle.text(nextChallenge.answer);
       challengeAnswer.text(nextChallenge.answer);
+      challengeLevel.text(nextChallenge.level);
+      asciiBox.text(nextChallenge.ascii);
     };
 
     var retrievePreviousInput = function(key) {
@@ -99,7 +95,7 @@ $(function() {
           postConsoleResponse(currentChallenge, consoleInputWrapper);
           postResult(currentChallenge.success, 'success', consoleInputWrapper);
           if (userIsAtLastChallenge(currentChallenge)) {
-            injectFinishedInfo();
+            window.location.href = '/finished';
           } else {
             currentChallenge = nextChallenge(currentChallenge);
             injectChallengeInfo(currentChallenge);
@@ -107,13 +103,6 @@ $(function() {
           break;
         case 'clear':
           clearConsole();
-          break;
-        case 'next':
-          if (currentChallenge.finished) {
-            window.location.href = '/finished';
-          } else {
-            postResult(lastChallenge.fail, 'fail', consoleInputWrapper);
-          }
           break;
         default:
           postResult(currentChallenge.fail, 'fail', consoleInputWrapper);

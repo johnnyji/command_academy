@@ -7,6 +7,7 @@ get '/' do
 end
 
 get '/begin' do
+  @challenges = Challenge.all.order(level: :asc)
   erb :challenges
 end
 
@@ -15,11 +16,6 @@ get '/challenges' do
   content_type :json
     challenges.to_json
 end
-
-get '/finished' do
-
-end
-
 
 #ADMIN
 
@@ -35,6 +31,10 @@ post '/signup' do
   else
     erb :'admin/signup'
   end
+end
+
+get '/finished' do
+  erb :finished
 end
 
 get '/login' do
@@ -84,7 +84,8 @@ get '/admin/challenges/:id/edit' do
 end
 
 post '/admin/challenges/:id/edit' do
-  @challenge = Challenge.update(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer])
+  @challenge = Challenge.find(params[:id])
+  @challenge.update(instructions: params[:instructions], console_text: params[:console_text], success: params[:success], fail: params[:fail], answer: params[:answer])
   if @challenge.persisted?
     redirect to('/admin/index')
   else
@@ -92,6 +93,9 @@ post '/admin/challenges/:id/edit' do
     erb :'admin/edit'
   end
 end
+
+
+
 
 helpers do
   def admin_count
